@@ -24,6 +24,26 @@
       color: #555;
       font-style: italic;
     }
+    .form-container {
+      margin-top: 50px;
+      text-align: center;
+    }
+    input {
+      width: 80%;
+      padding: 10px;
+      margin: 10px;
+      font-size: 16px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #2c3e50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #34495e;
+    }
     video {
       display: block;
       margin: 20px auto;
@@ -38,52 +58,89 @@
       margin-top: 40px;
       color: #888;
     }
+    .hidden {
+      display: none;
+    }
   </style>
 </head>
 <body>
 
   <h1>MCE Study Material</h1>
-  <div class="tagline">For serious learners aiming for excellence</div>
 
-  <!-- Video List -->
-  <video controls>
-    <source src="1.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
+  <!-- Login Form -->
+  <div class="form-container" id="loginFormContainer">
+    <h2>Login to Access Study Material</h2>
+    <form id="loginForm">
+      <input type="text" id="userId" placeholder="Enter User ID" required><br>
+      <input type="password" id="password" placeholder="Enter Password" required><br>
+      <button type="submit">Login</button>
+    </form>
+  </div>
 
-  <video controls>
-    <source src="2.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
+  <!-- Study Material (hidden initially) -->
+  <div id="studyMaterialContainer" class="hidden">
+    <div class="tagline">For serious learners aiming for excellence</div>
 
-  <video controls>
-    <source src="3.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
+    <!-- Video List -->
+    <video controls>
+      <source src="1.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
 
-  <video controls>
-    <source src="4.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
+    <video controls>
+      <source src="2.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
 
-  <video controls>
-    <source src="2025-02-28 23.15.05.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
+    <video controls>
+      <source src="3.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
 
-  <video controls>
-    <source src="2025-02-28 23.18.21.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
+    <video controls>
+      <source src="4.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
 
-  <video controls>
-    <source src="kuccchu.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
+    <video controls>
+      <source src="2025-02-28 23.15.05.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <video controls>
+      <source src="2025-02-28 23.18.21.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <video controls>
+      <source src="kuccchu.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
 
   <footer>
     © 2025 MCE | Study Material Repository
   </footer>
+
+  <script>
+    // Handle login logic
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent form submission
+
+      const userId = document.getElementById('userId').value;
+      const password = document.getElementById('password').value;
+
+      // Check if the entered credentials are correct
+      if (userId === 'vishu' && password === 'iamgod') {
+        // Show study material content and hide login form
+        document.getElementById('loginFormContainer').classList.add('hidden');
+        document.getElementById('studyMaterialContainer').classList.remove('hidden');
+      } else {
+        // If credentials are incorrect, show an alert
+        alert('Incorrect User ID or Password');
+      }
+    });
+  </script>
 
 </body>
 </html>
