@@ -10,7 +10,7 @@
       background-color: #f8f9fa;
       color: #333;
       padding: 20px;
-      max-width: 800px;
+      max-width: 1200px;
       margin: auto;
     }
     h1 {
@@ -24,6 +24,23 @@
       color: #555;
       font-style: italic;
     }
+
+    /* Grid Layout for Videos */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive columns */
+      gap: 20px;
+      padding: 10px;
+    }
+
+    video {
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Login Form Styling */
     .form-container {
       margin-top: 50px;
       text-align: center;
@@ -44,20 +61,14 @@
     button:hover {
       background-color: #34495e;
     }
-    video {
-      display: block;
-      margin: 20px auto;
-      width: 100%;
-      max-width: 720px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-    }
+
     footer {
       text-align: center;
       font-size: 14px;
       margin-top: 40px;
       color: #888;
     }
+
     .hidden {
       display: none;
     }
@@ -81,41 +92,50 @@
   <div id="studyMaterialContainer" class="hidden">
     <div class="tagline">For serious learners aiming for excellence</div>
 
-    <!-- Video List -->
-    <video controls>
-      <source src="1.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
+    <!-- Video Grid -->
+    <div class="video-grid">
+      <!-- Video 1 -->
+      <video controls>
+        <source src="1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
 
-    <video controls>
-      <source src="2.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
+      <!-- Video 2 -->
+      <video controls>
+        <source src="2.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
 
-    <video controls>
-      <source src="3.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
+      <!-- Video 3 -->
+      <video controls>
+        <source src="3.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
 
-    <video controls>
-      <source src="4.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
+      <!-- Video 4 -->
+      <video controls>
+        <source src="4.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
 
-    <video controls>
-      <source src="2025-02-28 23.15.05.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
+      <!-- Video 5 -->
+      <video controls>
+        <source src="2025-02-28 23.15.05.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
 
-    <video controls>
-      <source src="2025-02-28 23.18.21.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
+      <!-- Video 6 -->
+      <video controls>
+        <source src="2025-02-28 23.18.21.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
 
-    <video controls>
-      <source src="kuccchu.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
+      <!-- Video 7 -->
+      <video controls>
+        <source src="kuccchu.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
   </div>
 
   <footer>
