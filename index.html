@@ -7,24 +7,40 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f8f9fa;
+      background-color: #f8f9fa; /* Default background color */
       color: #333;
       padding: 20px;
       max-width: 1200px;
       margin: auto;
+      transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+    }
+
+    body.logged-in {
+      background-color: #2c3e50; /* Dark background color for logged-in state */
+      color: #fff; /* White text for contrast */
     }
 
     h1 {
       color: #2c3e50;
       text-align: center;
+      transition: color 0.3s ease-in-out; /* Smooth transition for color change */
+    }
+
+    h1.logged-in-title {
+      color: #f39c12; /* Gold color for title after login */
     }
 
     .tagline {
       text-align: center;
       font-size: 18px;
       margin-bottom: 40px;
-      color: #555;
       font-style: italic;
+      color: #555; /* Default color for tagline */
+      transition: color 0.3s ease-in-out;
+    }
+
+    body.logged-in .tagline {
+      color: white; /* Keep tagline white after login */
     }
 
     /* Grid Layout for Videos */
@@ -33,6 +49,10 @@
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: 20px;
       padding: 10px;
+    }
+
+    .video-container {
+      text-align: center;
     }
 
     video {
@@ -44,6 +64,17 @@
 
     .rotate-right {
       transform: rotate(5deg);
+    }
+
+    /* Premium Material Styling (Gold Highlight) */
+    .premium-material {
+      background-color: #f39c12; /* Gold color */
+      padding: 10px;
+      border-radius: 8px;
+      margin-top: 20px;
+      text-align: center;
+      font-weight: bold;
+      color: white;
     }
 
     /* Login Form Styling */
@@ -96,11 +127,22 @@
     #logoutBtn:hover {
       background-color: #c0392b;
     }
+
+    /* Search Bar Styling */
+    #searchBar {
+      width: 50%;
+      padding: 10px;
+      margin: 20px auto;
+      display: block;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
   </style>
 </head>
 <body>
 
-  <h1>MCE Study Material</h1>
+  <h1 id="pageTitle">MCE Study Material</h1>
 
   <!-- Login Form -->
   <div class="form-container" id="loginFormContainer">
@@ -117,49 +159,81 @@
     <button id="logoutBtn">Logout</button>
     <div class="tagline">For serious learners aiming for excellence</div>
 
-    <!-- Video Grid -->
-    <div class="video-grid" id="videoGrid">
-      <video controls>
-        <source src="1.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
+    <!-- Search Bar -->
+    <input type="text" id="searchBar" placeholder="Search for a video" onkeyup="searchVideos()">
 
-      <video controls>
-        <source src="2.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-
-       <video controls>
-        <source src="3.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-
-      <video controls>
-        <source src="4.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-
-      <video controls>
-        <source src="2025-02-28 23.15.05.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-
-      <video controls>
-        <source src="2025-02-28 23.18.21.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-
-      <video controls>
-        <source src="kuccchu.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-
-      <video controls>
-        <source src="2001.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
+    <!-- Premium Material Section -->
+    <div class="premium-material hidden" id="premiumMaterial">
+      Premium Material - Available Only for VIP Learners
     </div>
-  </div>
+
+     <!-- Video Grid -->
+     <div class="video-grid" id="videoGrid">
+        <div class="video-container" data-title="Sadhasukhi Civil Branch">
+          <video controls>
+            <source src="1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <p>Sadhasukhi Civil Branch</p>
+        </div>
+  
+        <div class="video-container" data-title="Sadhasukhi Civil Branch">
+          <video controls>
+            <source src="2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <p>Sadhasukhi Civil Branch</p>
+        </div>
+  
+        <div class="video-container" data-title="Sadhasukhi Civil Branch">
+          <video controls>
+            <source src="3.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <p>Sadhasukhi Civil Branch</p>
+        </div>
+  
+        <div class="video-container" data-title="Sadhasukhi Civil Branch">
+          <video controls>
+            <source src="4.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <p>Sadhasukhi Civil Branch</p>
+        </div>
+  
+        <div class="video-container" data-title="Sanjana Nag IS Branch">
+          <video controls>
+            <source src="2025-02-28 23.15.05.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <p>Sanjana Nag IS Branch</p>
+        </div>
+  
+        <div class="video-container" data-title="Gomathi">
+          <video controls>
+            <source src="2025-02-28 23.18.21.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <p>Gomathi</p>
+        </div>
+  
+        <div class="video-container" data-title="Kuchuu">
+          <video controls>
+            <source src="kuccchu.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <p>Kuchuu</p>
+        </div>
+  
+        <div class="video-container" data-title="Mysore Mallige (Year 2001)">
+          <video controls>
+            <source src="2001.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <p>Mysore Mallige (Year 2001)</p>
+        </div>
+      </div>
+    </div>
 
   <footer>
     © 2025 MCE | Study Material
@@ -176,6 +250,11 @@
       if (userId === 'admin' && password === 'mcelord') {
         document.getElementById('loginFormContainer').classList.add('hidden');
         document.getElementById('studyMaterialContainer').classList.remove('hidden');
+        document.body.classList.add('logged-in'); // Apply the logged-in styles
+        document.getElementById('pageTitle').classList.add('logged-in-title'); // Change title color to gold
+
+        // Show premium material if it's a VIP login
+        document.getElementById('premiumMaterial').classList.remove('hidden');
 
         // Shuffle videos
         const grid = document.getElementById('videoGrid');
@@ -192,7 +271,24 @@
       document.getElementById('studyMaterialContainer').classList.add('hidden');
       document.getElementById('loginFormContainer').classList.remove('hidden');
       document.getElementById('loginForm').reset();
+      document.body.classList.remove('logged-in'); // Revert to default styles
+      document.getElementById('pageTitle').classList.remove('logged-in-title'); // Revert title color
     });
+
+    // Search functionality
+    function searchVideos() {
+      const query = document.getElementById('searchBar').value.toLowerCase();
+      const videos = document.querySelectorAll('.video-container');
+      
+      videos.forEach(video => {
+        const title = video.getAttribute('data-title').toLowerCase();
+        if (title.includes(query)) {
+          video.style.display = 'block';
+        } else {
+          video.style.display = 'none';
+        }
+      });
+    }
   </script>
 
 </body>
